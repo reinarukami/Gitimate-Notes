@@ -1,10 +1,4 @@
-1. Go AND LOGIN TO MICROSOFT AZURE
-
-2. CREATE VIRTUAL MACHINE
-
-3. GO TO VIRTUAL MACHINE
-
-4. Do the FF:
+Do the FF:
 Intall:
 geth Ethereum https://geth.ethereum.org/downloads/
 Ethereum Wallet
@@ -14,8 +8,7 @@ create node1 folder
 npm init the node1
 
 Disable Firewall:
-
-5. After installation execute the files needed
+-After installation execute the files needed
 
 -- initbat
 
