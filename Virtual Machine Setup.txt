@@ -1,0 +1,70 @@
+1. Go AND LOGIN TO MICROSOFT AZURE
+
+2. CREATE VIRTUAL MACHINE
+
+3. GO TO VIRTUAL MACHINE
+
+4. Do the FF:
+Intall:
+geth Ethereum https://geth.ethereum.org/downloads/
+Ethereum Wallet
+NODEJS
+What is inside the memo text
+create node1 folder
+npm init the node1
+
+Disable Firewall:
+
+5. After installation execute the files needed
+
+-- initbat
+
+geth --datadir C:\Ethereum\Geth\private_net init C:\Ethereum\Geth\private_net\genesis.json
+
+-- start1bat
+
+geth --networkid "10" --nodiscover --datadir "C:\Ethereum\Geth\private_net" --rpc --rpcaddr "localhost" --rpcport "8545" --rpccorsdomain "*" --rpcapi "eth,net,web3,personal" --targetgaslimit "20000000" console
+
+in windows powershell type personal to see the codes
+personal.addAccount(password) 2x
+
+create two new account (personal.NewAccount(password)
+
+-- start2bat
+
+geth --networkid "10" --nodiscover --datadir "C:\Ethereum\Geth\private_net" --rpc --rpcaddr "l
+ocalhost" --rpcport "8545" --rpccorsdomain "*" --rpcapi "eth,net,web3,personal" --targetgaslimit "20000000" --unlock 0xfa8b8affb9ea8ea772dbc1b1a99f14e51e22cc36,0x0e9ad5330d5e0c13a1cecaf42110b48c3d87650f --password "C:\Ethereum\Geth\password
+.txt" console console 2>> C:\Ethereum\Geth\geth_err.l
+
+-- run.bat
+
+copy paste token.sol files and tokencreate.js
+
+miner.start(1)
+
+eth.mining
+
+eth.getBalance
+
+turn off firewall
+
+"0xf82d29d9cfa769d4942759da3e2d7a1e02aa01d5" "0x990bd49e1704ee4fb85298af1c33514f2d29c5f6"
+
+["0x4cfd21e27ac8d3f654d33875cb1f43a1c4a60aa2", "0xe9a435eb8f7e1fde460d5c76d0d6236bbf79f5c1"]
+
+geth --networkid "10" --nodiscover --datadir "C:\Ethereum\Geth\eth" --rpc --rpcaddr "localhost" --rpcport "8545" --rpccorsdomain "*" --rpcapi "eth,net,web3,personal" --targetgaslimit "20000000" --unlock 0x4cfd21e27ac8d3f654d33875cb1f43a1c4a60aa2,0xe9a435eb8f7e1fde460d5c76d0d6236bbf79f5c1 --password "C:\Ethereum\Geth\password.txt" console console 2>> C:\Ethereum\Geth\geth_err.log
+
+
+in visual studio application in applicationPool =clr4integratedAppPool
+add binding protocol    <binding protocol="http" bindingInformation="*:52139:10.0.2.4" />
+
+and in the azure in virtual machine -> inbound security rules add the port
+
+ip + port
+access the site http://13.75.122.188:52139/
+
+0x71a2a187ede86c7e9dada1f98ed089b406bd77e6
+
+
+
+geth --networkid "4" --datadir "C:\Ethereum\Geth\rinkeby" --syncmode "light" --ethstats 'yournode:Respect my authoritah!@stats.rinkeby.io' --bootnodes "enode://a24ac7c5484ef4ed0c5eb2d36620ba4e4aa13b8c84684e1b4aab0cebea2ae45cb4d375b77eab56516d34bfbd3c1a833fc51296ff084b770b94fb9028c4d25ccf@52.169.42.101:30303"

@@ -1,0 +1,56 @@
+-Geth Private Chaining Commands
+
+-Initialize Nodes
+
+geth --datadir C:\Ethereum\Geth\private_net init C:\Ethereum\Geth\private_net\genesis.json
+
+-Genesis.Json File
+
+{
+    "config": {
+        "chainId": 15,
+        "homesteadBlock": 0,
+        "eip155Block": 0,
+        "eip158Block": 0
+    },
+    "nonce": "0x0000000000000042",
+    "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "difficulty": "0x00",
+    "alloc": {},
+    "coinbase": "0x0000000000000000000000000000000000000000",
+    "timestamp": "0x00",
+    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "extraData": "0x00",
+    "gasLimit": "0x1312d00"
+}
+
+Adding Peer Commands
+admin.nodeInfo.enode - getting enode to connect to main
+admin.addPeers - Adding to the peer to be connected
+
+-Miner Configuration
+
+var mining_threads = 1
+
+function checkWork() {
+    if (eth.getBlock("pending").transactions.length > 0) {
+        if (eth.mining) return;
+        console.log("== Pending transactions! Mining...");
+        miner.start(mining_threads);
+    } else {
+        miner.stop();
+        console.log("== No transactions! Mining stopped.");
+    }
+}
+
+eth.filter("latest", function(err, block) { checkWork(); });
+eth.filter("pending", function(err, block) { checkWork(); });
+
+checkWork();
+
+-Miner Configuration (\Configuration\miner.js)
+
+-Starting Nodes with miner configuration
+
+geth --networkid "10" --nodiscover --datadir "C:\Ethereum\Geth\private_net" --rpc --rpcport "8545" --rpccorsdomain "*" --rpcapi "eth,net,web3,personal" --targetgaslimit "20000000" --preload "C:\Ethereum\Geth\private_net\Configurations\miner.js" console
+

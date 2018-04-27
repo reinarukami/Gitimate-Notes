@@ -1,0 +1,355 @@
+pragma solidity ^0.4.18;
+
+contract FileTransaction {
+    
+   uint id;
+   string fileHash;
+   string date;
+ 
+   event FileUploadEvent(
+       uint id,
+       string fileHash,
+       string date
+   );
+   
+   function AddFiles(uint _id, string _fileHash, string _date) public 
+   {
+ 
+       id = _id;
+       fileHash = _fileHash;
+       date = _date;
+       
+       FileUploadEvent(_id,  _fileHash,  _date);       
+   }
+   
+  
+    
+}
+
+pragma solidity ^0.4.18;
+
+contract FileTransaction {
+    
+   uint id;
+   
+     struct FileUpload{
+       uint id;
+       string fileHash;
+       string date;
+     }
+ 
+ mapping (uint => FileUpload) _fileUpload;
+ 
+   event FileUploadEvent(
+       uint id,
+       string fileHash,
+       string date
+   );
+   
+   function AddFiles(uint _id, string _fileHash, string _date) public 
+   {
+       var fileupload =  _fileUpload[_id];
+       fileupload.id = _id;
+       fileupload.fileHash = _fileHash;
+       fileupload.date = _date;
+       
+       FileUploadEvent(_id,  _fileHash,  _date);       
+   }
+   
+   function getMember(uint _number) public constant returns (uint id, string fileHash, string date) {
+       return (_fileUpload[_number].id, _fileUpload[_number].fileHash, _fileUpload[_number].date);
+   }
+   
+     
+}
+
+pragma solidity ^0.4.18;
+
+contract MemberContractv2 {
+    
+   uint count;
+   
+     struct Member{
+       string fname;
+       string lname;
+       uint age;
+     }
+ 
+ mapping (uint => Member) members;
+ 
+   event MemberEvent(
+       string fname,
+       string lname,
+       uint age,
+       uint count
+   );
+   
+   function AddMember(string _fname, string _lname, uint _age) public 
+   {
+       count += 1;
+       var Member = members[count];
+       Member.fname = _fname;
+       Member.lname = _lname;
+       Member.age = _age;
+   }
+   
+      function UpdateMember(uint _id ,string _fname, string _lname, uint _age) public {
+       
+       var Member = members[_id];
+       Member.fname = _fname;
+       Member.lname = _lname;
+       Member.age = _age;
+
+       MemberEvent(_fname,  _lname,  _age, count);       
+   }
+   
+   function getMember(uint _number) public constant returns (string , string , uint) {
+      
+       return (members[_number].fname, members[_number].lname, members[_number].age);
+   }
+   
+   function getMemberv2(uint _number) public {
+        MemberEvent(members[_number].fname, members[_number].lname, members[_number].age, count);
+   }
+   
+   function countInstructors() view public returns (uint){
+       return count;
+   }
+    
+}
+
+pragma solidity ^0.4.18;
+
+contract MemberContractv2 {
+    
+   uint count;
+   
+     struct Member{
+       string fname;
+       string lname;
+       uint age;
+       string contactnumber;
+       string home;
+     }
+ 
+ mapping (uint => Member) members;
+ 
+   event MemberEvent(
+       string fname,
+       string lname,
+       uint age,
+       string contactnumber,
+       string home,
+       string proc
+   );
+   
+   function AddMember(string _fname, string _lname, uint _age, string _contactnumber, string _home) public 
+   {
+       count += 1;
+       var Member = members[count];
+       Member.fname = _fname;
+       Member.lname = _lname;
+       Member.age = _age;
+       Member.contactnumber = _contactnumber;
+       Member.home = _home;
+       
+       MemberEvent(_fname,  _lname,  _age, _contactnumber , _home, "AddMember");       
+   }
+   
+      function UpdateMember(uint _id ,string _fname, string _lname, uint _age, string _contactnumber, string _home) public {
+       
+       var Member = members[_id];
+       Member.fname = _fname;
+       Member.lname = _lname;
+       Member.age = _age;
+       Member.contactnumber = _contactnumber;
+       Member.home = _home;
+
+       MemberEvent(_fname,  _lname,  _age, _contactnumber , _home, "UpdateMember");       
+   }
+   
+   function getMember(uint _number) public constant returns (string , string , uint, string, string) {
+      
+       return (members[_number].fname, members[_number].lname, members[_number].age, members[_number].contactnumber, members[_number].home);
+   }
+   
+   
+   function countInstructors() view public returns (uint){
+       return count;
+   }
+    
+}
+
+pragma solidity ^0.4.18;
+
+contract Coursetro {
+    
+   string fName;
+   uint age;
+   
+   function setInstructor(string _fName, uint _age) public {
+       fName = _fName;
+       age = _age;
+   }
+   
+   function getInstructor() public constant returns (string, uint) {
+       return (fName, age);
+   }
+    
+}
+pragma solidity ^0.4.0;
+
+interface Regulator {
+    function checkValue(uint amount) returns (bool);
+    function loan() returns (bool);
+}
+
+contract Bank is Regulator {
+    uint private value;
+    address private owner;
+    
+   modifier ownerFunc {
+       require(owner == msg.sender);
+       _;
+   }
+    
+    function Bank(uint amount)  {
+        value = amount;
+        owner = msg.sender;
+    }
+    
+    function deposit(uint amount) ownerFunc {
+        value += amount;
+    }
+    
+    function withdraw(uint amount) ownerFunc returns (string)
+    {
+        if(checkValue(amount)){
+        value -= amount;
+        return "successfully withdraw";
+        }
+        else{
+            return "cannot withdraw";
+        }
+    }
+    
+    function balance() ownerFunc returns(uint){
+        return value;
+    }
+    
+    function checkValue(uint amount) ownerFunc returns(bool){
+        return amount < value;
+    }
+}
+
+contract MyFirstContract is Bank(1000) {
+    string private name;
+    uint private age;
+    
+    function setName(string newName){
+        name = newName;
+    }
+
+    
+    function getName() returns (string){
+        return name;
+    }
+    
+    function setAge(uint newAge){
+        age = newAge;
+    }
+    
+    function getAge() returns (uint){
+        return age;
+    }
+
+    function loan() returns (bool){
+        return true;
+    }
+}
+
+pragma solidity ^0.4.18;
+
+contract MemberContractv2 {
+    
+   uint count;
+   
+     struct Member{
+       string fname;
+       string lname;
+       uint age;
+     }
+ 
+ mapping (uint => Member) members;
+ 
+   event MemberEvent(
+       string fname,
+       string lname,
+       uint age,
+   );
+   
+   function AddMember(string _fname, string _lname, uint _age) public 
+   {
+       count += 1;
+       var Member = members[count];
+       Member.fname = _fname;
+       Member.lname = _lname;
+       Member.age = _age;
+   }
+   
+      function UpdateMember(uint _id ,string _fname, string _lname, uint _age) public {
+       
+       var Member = members[_id];
+       Member.fname = _fname;
+       Member.lname = _lname;
+       Member.age = _age;
+
+   }
+   
+   function getMember(uint _number) public constant returns (string , string , uint) {
+      
+       return (members[_number].fname, members[_number].lname, members[_number].age);
+   }
+   
+   function getMemberv2(uint _number) public {
+        MemberEvent(members[_number].fname, members[_number].lname, members[_number].age, count);
+   }
+   
+   function countInstructors() view public returns (uint){
+       return count;
+   }
+    
+}
+
+pragma solidity ^0.4.18;
+
+contract MemberContract {
+    
+   string fname;
+   string lname;
+   uint age;
+   string contactnumber;
+   string home;
+   
+   event Member(
+       string fname,
+       string lname,
+       uint age,
+       string contactnumber,
+       string home
+   );
+   
+   function setMember(string _fname, string _lname, uint _age, string _contactnumber, string _home) public {
+       fname = _fname;
+       lname = _lname;
+       age = _age;
+       contactnumber = _contactnumber;
+       home = _home;
+       Member(_fname,  _lname,  _age,  _contactnumber,  _home);
+   }
+   
+   function getMember() public constant returns (string , string , uint , string , string) {
+       return (fname, lname, age, contactnumber, home);
+   }
+    
+}
