@@ -1,0 +1,65 @@
+pragma solidity ^0.4.0;
+contract WalletContract {
+    
+    struct Account{
+        string email;
+        address acctAddr;
+        string acctKey;
+        bool isExist;
+    }
+    
+    mapping(string=>Account) listAccount;
+    address[] private listAddress;
+    string[] private listEmail;
+    uint listCount;
+    
+    // Check if Email exists on registered accounts
+    function isEmailExist(string email) public view returns(bool isExists){
+        if(listAccount[email].isExist){
+            return true;
+        }
+        return false;
+    } 
+    
+    // Register Account 
+    function registerAccount(string email,address acctAddr,string acctKey) public returns(bool isSuccess,string errMsg){
+        if(listAccount[email].isExist){
+            return (false,'Account email already exists');
+        }else{
+            Account memory acct = Account(email,acctAddr,acctKey,true);
+            listAccount[email] = acct;
+            listAddress.push(acctAddr);
+            listEmail.push(email);
+            return (true,'');
+        }
+        listCount++;
+    }
+    
+    function getAccountByEmail(string email) public view returns(string aEmail,address aAcctAddr,string aAcctKey){
+        if(isEmailExist(email)){
+            return (email,listAccount[email].acctAddr,listAccount[email].acctKey);
+        }else{
+            address emptyAddr = address(0);
+            return ('',emptyAddr,'');
+        }
+    }
+    
+    function transferFunds(string email)public payable {
+        listAccount[email].acctAddr.transfer(msg.value);
+    }
+    
+    function getAccountByAddress(address addr) public view returns(string email) {
+        for(uint i = 0;i < listAddress.length;i++){
+            if(listAddress[i] == addr){
+                return listEmail[i];
+            }
+        }
+    }
+    
+    function getListAccount() public view returns(address[] accountList) {
+        return listAddress;
+    }
+    
+
+
+}

@@ -1,0 +1,60 @@
+V1
+
+docker container list
+docker stop neo-privatenet
+docker container list
+docker rm neo-privatenet
+docker container list
+docker run -d --name neo-privatenet -p 20333-20336:20333-20336/tcp -p 30333-30336:30333-30336/tcp cityofzion/neo-privatenet
+docker container list
+
+REM cd opt/neo-python
+REM python3 prompt.py -p
+REM block 0
+docker exec -it neo-privatenet /bin/bash
+
+np-prompt -p -v
+
+docker run -d --name neo-scan -p 40000/tcp -p 
+
+Neo Db
+
+cd C:\Users\rsumalde\Documents\NEO\local-neo\neodb
+docker-compose up
+
+
+
+tskill typeyourPIDhere 
+
+needed to setup babel for the import to make it work
+$ npm install babel-register babel-preset-es2015 --s
+ave-dev
+
+
+0xc4a353aac59d95f0e416d5cbc1d49e783563cd28
+
+AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y
+
+
+
+
+
+
+PrivateNet Accounts:
+
+
+
+AUKJcxJaHjDq1jbEbamegQcZNVSLRaK7c3
+044310b9142543d25af6cd2524d2f4fa973b044795f86ec78ae49f798bda7183
+
+
+
+AK2nJJpJr6o664CWJKi1QRXjqeic2zRp8y
+1dd37fba80fec4e6a6f13fd708d8dcb3b29def768017052f6c930fa1c5d90bbb
+
+
+ALAnksUgh2Ng8UXpHZ2YX84iCnC66gxqzj
+f0c823872e0160e6ea98d49e1445ce10b9a298c7aa87b360d6a156b56b9884e9
+
+
+

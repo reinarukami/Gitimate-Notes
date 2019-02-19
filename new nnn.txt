@@ -1,0 +1,157 @@
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Windows.Controls;
+using LiveCharts;
+using LiveCharts.Configurations;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace ProjectNameV1.Resources.content.Home.HomeContent
+{
+	/// <summary>
+	/// Interaction logic for Graph.xaml
+	/// </summary>
+	public partial class Graph : UserControl
+	{
+		public const string btcURL = "https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=USD&limit=100&aggregate=3&e=CCCAGG";
+		public const string neoURL = "https://min-api.cryptocompare.com/data/histohour?fsym=NEO&tsym=USD&limit=100&aggregate=3&e=CCCAGG";
+		public const string ltcURL = "https://min-api.cryptocompare.com/data/histohour?fsym=LTC&tsym=USD&limit=100&aggregate=3&e=CCCAGG";
+		public const string ethURL = "https://min-api.cryptocompare.com/data/histohour?fsym=ETH&tsym=USD&limit=100&aggregate=3&e=CCCAGG";
+
+		public Func<double, string> XFormatter;
+		public ChartValues<DateTimePoint> BTC { get; set; }
+		public ChartValues<DateTimePoint> LTC { get; set; }
+		public ChartValues<DateTimePoint> NEO { get; set; }
+		public ChartValues<DateTimePoint> ETH { get; set; }
+
+		public Graph()
+		{
+			InitializeComponent();
+			XFormatter = val => new DateTime((long)val).ToString("dd MMM");
+			MapData();
+
+		
+		}
+
+
+		public DateTime UnixTimeStampToDateTime(int unixTimeStamp)
+		{
+			DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+			dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+			return dtDateTime;
+		}
+
+		public async void MapData()
+		{
+			HttpResponseMessage btcresponse = null;
+			HttpResponseMessage neoresponse = null;
+			HttpResponseMessage ltcresponse = null;
+			HttpResponseMessage ethresponse = null;
+
+			using (var client = new HttpClient())
+			{
+				Task t1 = Task.Run(async () => btcresponse = await client.GetAsync(btcURL));
+				Task t2 = Task.Run(async () => neoresponse = await client.GetAsync(neoURL));
+				Task t3 = Task.Run(async () => ltcresponse = await client.GetAsync(ltcURL));
+				Task t4 = Task.Run(async () => ethresponse = await client.GetAsync(ethURL));
+
+				await Task.WhenAll(t1, t2, t3, t4);
+
+				if (btcresponse.IsSuccessStatusCode)
+				{
+					string btcstring = await btcresponse.Content.ReadAsStringAsync();
+
+					var data = (JObject)JsonConvert.DeserializeObject(btcstring);
+					var high = JsonConvert.DeserializeObject<List<Data>>(data["Data"].ToString());
+
+					BTC = new ChartValues<DateTimePoint>();
+					foreach (var item in high)
+					{
+						var val = new DateTimePoint();
+						val.Value = item.high;
+						val.DateTime = UnixTimeStampToDateTime(item.time);
+						BTC.Add(val);
+					}
+
+
+				}
+
+				if (neoresponse.IsSuccessStatusCode)
+				{
+					string neostring = await neoresponse.Content.ReadAsStringAsync();
+
+					var data = (JObject)JsonConvert.DeserializeObject(neostring);
+					var high = JsonConvert.DeserializeObject<List<Data>>(data["Data"].ToString());
+
+					NEO = new ChartValues<DateTimePoint>();
+					foreach (var item in high)
+					{
+						var val = new DateTimePoint();
+						val.Value = item.high;
+						val.DateTime = UnixTimeStampToDateTime(item.time);
+						NEO.Add(val);
+					}
+
+
+				}
+
+				if (ltcresponse.IsSuccessStatusCode)
+				{
+					string ltcstring = await ltcresponse.Content.ReadAsStringAsync();
+
+					var data = (JObject)JsonConvert.DeserializeObject(ltcstring);
+					var high = JsonConvert.DeserializeObject<List<Data>>(data["Data"].ToString());
+
+					LTC = new ChartValues<DateTimePoint>();
+					foreach (var item in high)
+					{
+						var val = new DateTimePoint();
+						val.Value = item.high;
+						val.DateTime = UnixTimeStampToDateTime(item.time);
+						LTC.Add(val);
+					}
+
+
+				}
+
+				if (ethresponse.IsSuccessStatusCode)
+				{
+					string ethstring = await ethresponse.Content.ReadAsStringAsync();
+
+					var data = (JObject)JsonConvert.DeserializeObject(ethstring);
+					var high = JsonConvert.DeserializeObject<List<Data>>(data["Data"].ToString());
+
+					ETH = new ChartValues<DateTimePoint>();
+					foreach (var item in high)
+					{
+						var val = new DateTimePoint();
+						val.Value = item.high;
+						val.DateTime = UnixTimeStampToDateTime(item.time);
+						ETH.Add(val);
+					}
+
+
+				}
+
+				if (btcresponse.IsSuccessStatusCode && neoresponse.IsSuccessStatusCode && ltcresponse.IsSuccessStatusCode && ethresponse.IsSuccessStatusCode)
+				{
+					DataContext = this;
+				}
+			}
+
+			}
+		
+		}
+
+		public class Data {
+			public double high { get; set; }
+			public int time { get; set; }
+		}
+
+
+}
+

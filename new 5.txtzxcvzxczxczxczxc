@@ -1,0 +1,18 @@
+2490220131410229
+robinsumalde
+
+reinarukami
+3639414020241641
+
+{
+	'Accounts':[
+		{'Coin': 'NEO', 'PrivateKey':'5dc54fdc8a60cfa011137817b4120171f7a1291178749ee4680bc29e991dbaf4'},	
+		{'Coin': 'ETH', 'PrivateKey':'4E0848AB6518254D64EF4882EB9A2AF55C748BD64A242FA88E5F12D8D8047B17'}
+	],
+	 'Coins':['100', '200']
+}
+
+
+make Owner As token for connection string
+
+make IDENT_CURRENT in Current table

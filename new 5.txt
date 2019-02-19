@@ -1,0 +1,11 @@
+use refs when getting value in element refs
+
+
+Found Bugs
+
+When link is invalid system error occurs
+Probable Solution
+Use Catch
+
+When Searched and updated the value 
+

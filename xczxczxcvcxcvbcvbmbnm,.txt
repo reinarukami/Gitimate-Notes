@@ -1,0 +1,36 @@
+hard b1 = registered month;
+hard b2 = registered month;
+hard b3 = registered month;
+hard b4 = registered month;
+hard b5 = registered month;
+var nextmonth = registered next month;
+
+?Batch Trigger Logic
+if(now > 31 days)
+{
+	if(now > disk serial registered month + 6 month){
+		disk1.serial = nextmonth;
+		nextmonth = nextmonth + 1 month
+	}
+
+	if(now > disk serial registered month + 6 month){
+		disk1.serial = nextmonth;
+		nextmonth = nextmonth + 1 month
+	}
+
+	if(now > disk serial registered month + 6 month){
+		disk1.serial = nextmonth;
+		nextmonth = nextmonth + 1 month
+	}
+
+	if(now> disk serial registered month + 6 month){
+		disk1.serial = nextmonth;
+		nextmonth = nextmonth + 1 month
+	}
+	
+    if(now > disk serial registered month + 6 month){
+		disk1.serial = nextmonth;
+		nextmonth = nextmonth + 1 month
+	}
+}
+

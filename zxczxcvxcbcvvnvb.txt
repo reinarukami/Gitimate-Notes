@@ -1,0 +1,10 @@
+
+Objectives
+
+- Install MS SQL
+
+- Install IIS
+
+- Test Application in restlet
+
+- Install Local Setting Application

@@ -1,0 +1,23 @@
+                    //System.Data.DataTable dataTable = new System.Data.DataTable();
+                    //System.Data.DataRow row = dataTable.NewRow();
+
+                    //using (TextFieldParser parser = new TextFieldParser(open.FileName))
+                    //{
+                    //    parser.TextFieldType = FieldType.Delimited;
+                    //    parser.SetDelimiters(",");
+                    //    while (!parser.EndOfData)
+                    //    {
+                    //        bool isHeader = true;
+                    //        int index = 0;
+                    //        //Process row
+                    //        string[] fields = parser.ReadFields();
+                    //        foreach (string field in fields)
+                    //        {
+                    //            if (isHeader)
+                    //            {
+                    //                header[index] = field;
+                    //            }
+                    //            index++;
+                    //        }
+                    //    }
+                    //}

@@ -1,0 +1,55 @@
+(File)
+-Id
+-Date
+-File Name
+-Category
+-Type
+-Status
+-Action 
+ *Delete (When file is valid)
+ *Restore (When file is invalid)
+ 
+ (User)
+ -Id
+ -AccountId
+ -Email
+ -Username
+ -Password
+ -Name
+ -Address
+ -Birthday
+ -Birthplace
+ -Contact Number
+ 
+ 
+ =DBoard Page=
+ 
+ Search
+ Count total number of files
+ Count With OK Status
+ Count with ERROR Status
+ Can Sort With Categories
+ With Pager
+ UploadFile
+ 
+ =Files=
+ 
+ Search
+ UploadFile
+ Can Sort With Category (Count Category)
+ Can Add Category
+ With Pager
+ 
+ =Learn how to use Mapper=
+ =Learn how to use Abstract Validator=
+ =Learn return of Asset Management= 
+ 
+ C:\ProgramData\Oracle\Java\javapath
+ C:\Program Files (x86)\Common Files\Oracle\Java\javapath
+ 
+ 
+ 
+ 
+ 
+
+ 

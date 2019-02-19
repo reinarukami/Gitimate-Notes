@@ -1,0 +1,36 @@
+Updates in Prototype 6/15/2018
+	Decentralize Application
+	-Make it as Vue (SPA)
+	-Update on CSS (Materialize Update)
+	
+	Contract
+	-You will pay a fee for it to use their file storing service  (1 ether example)
+	
+-Finish AFP Prototype v4
+-Think of needed upgrades in AFP V4
+   -Add new columns in member_t
+      -acc_password
+	  -acc_address
+    -Validate through mirror 
+
+-Research C# ASP.Net Core (configurations) for future Implementation
+-Research on vue.js
+
+-Upgrade AFP Prototype to BlockChain only dependent
+-Read RSV White Paper
+
+	
+VUE NOTES
+
+   -Will freeze the value means it cannot be edited
+      Object.freeze(obj)
+ 
+   -Can change the value by using thus
+   <button v-on:click="foo = 'baz'">Change it</button>
+   
+   -You can also perform one-time interpolations that do not update on data change by using the v-once directive, but keep in mind this will also affect any other bindings on the same node:
+   
+   -The double mustaches interprets the data as plain text, not HTML. In order to output real HTML, you will need to use the v-html directive:
+   
+   <p>Using mustaches: {{ rawHtml }}</p>
+   <p>Using v-html directive: <span v-html="rawHtml"></span></p>

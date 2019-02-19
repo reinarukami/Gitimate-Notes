@@ -1,0 +1,18 @@
+11 AM Sir kasahara
+
+(Revive 3FA V0.1.0)
+
+- Option 1
+Rebuild library.DLL and copy to the project file
+
+- Option 2
+Rebuild Installers and reinstall to kinji and kasahara
+
+-Option 3
+Full debug and reinstall
+
+- Test Scenarios
+
+- Button Decline
+
+

@@ -1,0 +1,256 @@
+[
+	{
+		'constant': true,
+		'inputs': [],
+		'name': 'GetCount',
+		'outputs': [
+			{
+				'name': 'count',
+				'type': 'uint256'
+			}
+		],
+		'payable': false,
+		'stateMutability': 'view',
+		'type': 'function'
+	},
+	{
+		'constant': true,
+		'inputs': [
+			{
+				'name': '_count',
+				'type': 'uint256'
+			}
+		],
+		'name': 'GetFilesDescription',
+		'outputs': [
+			{
+				'name': 'filetitle',
+				'type': 'string'
+			},
+			{
+				'name': 'filetype',
+				'type': 'string'
+			},
+			{
+				'name': 'category',
+				'type': 'uint256'
+			},
+			{
+				'name': 'filedescription',
+				'type': 'string'
+			},
+			{
+				'name': 'date',
+				'type': 'string'
+			}
+		],
+		'payable': false,
+		'stateMutability': 'view',
+		'type': 'function'
+	},
+	{
+		'constant': false,
+		'inputs': [
+			{
+				'name': '_category',
+				'type': 'string'
+			}
+		],
+		'name': 'AddCategory',
+		'outputs': [
+			{
+				'name': 'status',
+				'type': 'bool'
+			}
+		],
+		'payable': false,
+		'stateMutability': 'nonpayable',
+		'type': 'function'
+	},
+	{
+		'constant': true,
+		'inputs': [
+			{
+				'name': '_addr',
+				'type': 'address'
+			}
+		],
+		'name': 'isAccountValid',
+		'outputs': [
+			{
+				'name': 'status',
+				'type': 'bool'
+			}
+		],
+		'payable': false,
+		'stateMutability': 'view',
+		'type': 'function'
+	},
+	{
+		'constant': true,
+		'inputs': [
+			{
+				'name': '_id',
+				'type': 'uint256'
+			}
+		],
+		'name': 'GetCategory',
+		'outputs': [
+			{
+				'name': '_category',
+				'type': 'string'
+			},
+			{
+				'name': '_count',
+				'type': 'uint256'
+			}
+		],
+		'payable': false,
+		'stateMutability': 'view',
+		'type': 'function'
+	},
+	{
+		'constant': true,
+		'inputs': [
+			{
+				'name': '_count',
+				'type': 'uint256'
+			}
+		],
+		'name': 'GetFiles',
+		'outputs': [
+			{
+				'name': 'filehash',
+				'type': 'string'
+			},
+			{
+				'name': 'filename',
+				'type': 'string'
+			},
+			{
+				'name': 'backuphash',
+				'type': 'string'
+			},
+			{
+				'name': 'active',
+				'type': 'uint256'
+			}
+		],
+		'payable': false,
+		'stateMutability': 'view',
+		'type': 'function'
+	},
+	{
+		'constant': false,
+		'inputs': [
+			{
+				'name': '_email',
+				'type': 'string'
+			},
+			{
+				'name': '_password',
+				'type': 'string'
+			},
+			{
+				'name': '_acctAddr',
+				'type': 'address'
+			},
+			{
+				'name': '_acctKey',
+				'type': 'string'
+			}
+		],
+		'name': 'registerAccount',
+		'outputs': [
+			{
+				'name': 'isSuccess',
+				'type': 'bool'
+			},
+			{
+				'name': 'errMsg',
+				'type': 'string'
+			}
+		],
+		'payable': false,
+		'stateMutability': 'nonpayable',
+		'type': 'function'
+	},
+	{
+		'constant': false,
+		'inputs': [
+			{
+				'name': '_fileHash',
+				'type': 'string'
+			},
+			{
+				'name': '_filetitle',
+				'type': 'string'
+			},
+			{
+				'name': '_filename',
+				'type': 'string'
+			},
+			{
+				'name': '_filetype',
+				'type': 'string'
+			},
+			{
+				'name': '_category',
+				'type': 'uint256'
+			},
+			{
+				'name': '_filedescription',
+				'type': 'string'
+			},
+			{
+				'name': '_backuphash',
+				'type': 'string'
+			},
+			{
+				'name': '_date',
+				'type': 'string'
+			}
+		],
+		'name': 'AddFiles',
+		'outputs': [
+			{
+				'name': 'status',
+				'type': 'bool'
+			}
+		],
+		'payable': false,
+		'stateMutability': 'nonpayable',
+		'type': 'function'
+	},
+	{
+		'constant': true,
+		'inputs': [
+			{
+				'name': '_email',
+				'type': 'string'
+			},
+			{
+				'name': '_password',
+				'type': 'string'
+			}
+		],
+		'name': 'getAccountByEmail',
+		'outputs': [
+			{
+				'name': 'Email',
+				'type': 'string'
+			},
+			{
+				'name': 'AcctAddr',
+				'type': 'address'
+			},
+			{
+				'name': 'AcctKey',
+				'type': 'string'
+			}
+		],
+		'payable': false,
+		'stateMutability': 'view',
+		'type': 'function'
+	}
+]

@@ -1,0 +1,173 @@
+using _3FA_OWNER.Resources.content.message;
+using _3FA_OWNER.Resources.Model;
+using Libraries.CommonControls;
+using Libraries.Domain.DTO.Authenticate;
+using Libraries.Helpers;
+using Microsoft.AspNet.SignalR.Client;
+using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Media;
+using System.Net.Http;
+using System.Text;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Interop;
+using static Libraries.Settings.Bootstrap;
+
+namespace _3FA_OWNER.Resources.content.Authentication
+{
+    /// <summary>
+    /// Interaction logic for TransactionWindow.xaml
+    /// </summary>
+    public partial class TransactionWindow : Window
+    {
+        public static TransactionWindow tw = new TransactionWindow();
+        public HwndSource hwndSource;
+        private const int DEVICE_CHANGE = 0x219;
+        public static bool serverUSB = false;
+        private static IHubProxy hubProxy;
+        private static HubConnection hubConnection;
+
+        public TransactionWindow()
+        {
+            InitializeComponent();
+            tw = this;
+
+            if(hubConnection == null)
+            {
+                var obj = USBConnectorHelper.GetHubConnection();
+
+                hubConnection = (HubConnection)obj[0];
+                hubProxy = (IHubProxy)obj[1];
+
+                var task = hubConnection.Start();
+                task.Wait();
+
+                var task2 = hubProxy.Invoke("UserConnected", new object[] { Sessions.token });
+                task2.Wait();
+       
+            }
+
+            else
+            {
+                GetFlashDrivesAsync();
+            }
+
+            //customTimer.UsbTimer();
+            //sampleNotif();
+        }
+        private async void sampleNotif()
+        {
+            await CustomTimer._AsyncTimer(5000);
+            SystemSounds.Asterisk.Play();
+            gridWindow.Children.Clear();
+            gridWindow.Children.Add(new ApproveTransaction());
+        }
+
+        public async void USBTimer()
+        {
+            customTimer.usbTimer.Interval = new TimeSpan(0, 0,/* CustomTimer.GetDelay()*/3);
+            var client = new HttpClient();
+
+            var status = new AuthenticateUSB();
+            status.status = serverUSB;
+
+            var AuthContent = new StringContent(JsonConvert.SerializeObject(status), Encoding.UTF8, "application/json");
+            var authResponse = await client.PostAsync(TFAapi.AuthUSBUrl, AuthContent);
+        }
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            var hwndSource = PresentationSource.FromVisual(this) as HwndSource;
+            if (hwndSource != null)
+            {
+                hwndSource.AddHook(WndProc);
+            }
+        }
+
+        private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            if (msg == DEVICE_CHANGE)
+            {
+                GetFlashDrivesAsync();
+            }
+            return IntPtr.Zero;
+        }
+
+        public void GetFlashDrivesAsync()
+        {
+            DriveInfo[] mydrives = DriveInfo.GetDrives();
+            serverUSB = false;
+
+            foreach (DriveInfo mydrive in mydrives)
+            {
+                if (mydrive.DriveType == DriveType.Removable)
+                {
+                    if (mydrive.IsReady == true)
+                    {
+                        if (mydrive.VolumeLabel == "OWNERWALLET")
+                        {
+                            serverUSB = true;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            if(serverUSB == true)
+            {
+                var task = hubProxy.Invoke("USBConnected", new object[] { Sessions.token });
+                task.Wait();
+            }
+
+            else
+            {
+                var task = hubProxy.Invoke("USBDisconnected", new object[] { Sessions.token });
+                task.Wait();
+            }
+
+
+
+            VerifyUSBContent.vusbc.changeLoader(VerifyUSBContent.vusbc.serverLoader, VerifyUSBContent.vusbc.serverImgCheck, VerifyUSBContent.vusbc.labelServerUSB, serverUSB, "Server");
+        }
+
+        private void MainPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            customTimer.unendingTimer.Start();
+            Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            customTimer.usbTimer.Stop();
+        }
+
+        public void _LoaderMSG(LoaderMSG lmsg)
+        {
+            GridControl.clearChildren(tw.vusbLoader);
+            tw.vusbLoader.Children.Add(lmsg);
+        }
+    }
+	
+	
+}

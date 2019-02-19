@@ -1,0 +1,32 @@
+Sick Leave 
+
+08/06/2018 - diarhea and body ache 1
+
+Vacation Leave 
+
+07/17/2018 - Flood 1
+07/24/2018 - Financial matters 1
+08/13/2018 - Flood 1
+08/01/2018 - Family Matters 1/2
+
+teleric
+bunifo
+
+Scan your fingerprint
+byte
+user
+
+isang resource message resources
+
+
+			    	Application.Current.Dispatcher.Invoke((Action)delegate {
+					
+					                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri("/images/check.png", UriKind.Relative);
+                    bitmap.EndInit();
+
+                    // Set Image.Source  
+                    imgFingerprint.Source = bitmap;
+
+						});

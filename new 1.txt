@@ -1,0 +1,10 @@
+   this.contracts.HighLowGame.deployed().then((instance) => {
+          return 
+		  
+		  var test = instance.playGame('high', {from: this.account})
+      })
+    }
+	
+	echo "export EOSIO_INSTALL_DIR=$/mnt/x/Workspaces/EOS/EOSDIR" >> ~/.bashrc
+	
+	

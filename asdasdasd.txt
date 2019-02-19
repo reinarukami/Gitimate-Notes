@@ -1,0 +1,39 @@
+Fetch with Pager
+Fetch All 
+Fetch by ID
+Loader Fix
+Simplification of codes
+
+Has pager for ID
+
+
+3952990041045614
+
+
+
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=IVP-LAPTOP74\\SQLEXPRESS;Initial Catalog=ptech-am-db;Integrated Security=True"
+  },
+
+  //"Server=localhost\\SQLEXPRESS;Database=master;Trusted_Connection=True;": null,
+
+  "AppSettings": {
+    "RecordDisplayPerPage": 5
+  },
+  "Logging": {
+    "IncludeScopes": false,
+    "Debug": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    },
+    "Console": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    }
+  }
+}
+
+

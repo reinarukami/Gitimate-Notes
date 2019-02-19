@@ -1,0 +1,18 @@
+docker container list
+docker stop neo-privatenet
+docker container list
+docker rm neo-privatenet
+docker container list
+docker run -d --name neo-privatenet -p 20333-20336:20333-20336/tcp -p 30333-30336:30333-30336/tcp cityofzion/neo-privatenet
+docker container list
+
+REM cd opt/neo-python
+REM python3 prompt.py -p
+REM block 0
+docker exec -it neo-privatenet /bin/bash
+
+np-prompt -p -v
+
+KxDgvEKzgSBPPfuVfw67oPQBSjidEiqTHURKSDL1R7yGaGYAeYnr
+
+0x21d1bb60529e1115ac9065ec77afbb1d0e448a33

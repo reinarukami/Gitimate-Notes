@@ -1,0 +1,77 @@
+        string filehash;
+        string filetitle;
+        string filename;
+        string filetype;
+        uint category;
+        string filedescription;
+        string backuphash;
+        string date;
+        uint active;
+
+personal.unlockAccount("0x0688d993956fa550b3bd245b49294d4a740080bf", "password")
+
+{
+  "FileName": "temp.jpg",
+  "FileTitle": "Title",
+  "Category": 1,
+  "FileDescription": "Description"
+}
+
+{
+'UserName':'Robin',
+'Password':'Robin321',
+'Usertype':100
+}
+
+{
+'UserName':'Robin',
+'Password':'Robin321',
+'Usertype':100
+}
+
+{
+'UserName':'Robin',
+'Password':'Robin321',
+'RegistrationCode':'Robin',
+'ComputerName':'Robin321',
+'BIOSSerialNumber':'Robin',
+'HardDiskSerialNumber':'Robin321',
+'MemorySerialNumber':'Robin',
+}
+
+G3NXCV104790113 B
+IVP-LAPTOP74 C
+S0E001SSHPJLRK H
+18102522 M
+Robin
+Robin321
+
+4066129893706102
+
+{
+'UserType' : '100',
+'AuthenticationType' : 1,
+'ComputerName' : 'IVP-LAPTOP74',
+'BIOSSerialNumber' : 'G3NXCV104790113',
+'HardDiskSerialNumber' : 'S0E001SSHPJLRK',
+'MemorySerialNumber' : '18102522'
+}
+
+{
+  'UserName':'reinarukami',
+  'Password':'reinarukami',
+  'Usertype':100,
+  'FingerPrint':'<?xml version=\"1.0\" encoding=\"UTF-8\"?><Fid><Bytes>Rk1SACAyMAABZAAz/v8AAAFlAYgAxQDFAQAAAFY2QKUAdQphQHYBSzhfgDcBFY1egJABSDZeQHYAqn5cgH8AGhVcQEoAPXZbgJkAzIVbQKoAqn9ZQFsANxpZQOsAzZZYQHEAxYFYQIwBFo9XQDYA9H5VQLcAS2dVgG4ARxdUQJcAWHFTQFwBNjNTgFcBSEFTQLoA5YxSQNEAXLBRgNsAdKdQQHgBPDpQgIMBNTdPQMwA3Y9PQMoAe6VOQIwApIFOQCMA2HpNgLYAtIdKgN4A3ZJKQNEAspFJgKABTTdIgI4AvSNIQMQA6DVIQPgAkY9GgH8BJY9EQK0AIQ9BQMUAg2NBgIgAoh0/gPcApj8/QHcBMpI9gM0AvI88QNcA2zU8QMEBDjI7gPcAvTo5QFgBVEc5QLwAsIk3gJUBLJA3ADIBMD0wALwAn5QvAPMAdKkuAL4Am54uAPsAtJQtAPcAzi0oAAA=</Bytes><Format>1769473</Format><Version>1.0.0</Version></Fid>'
+}
+
+{
+  'UserName':'reinarukami',
+  'Password':'reinarukami',
+  'Usertype':100
+ }
+ 
+ 1054505715455355
+
+
+
+

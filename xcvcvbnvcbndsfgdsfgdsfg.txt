@@ -1,0 +1,30 @@
+Library
+> UserControls
+	> Timer
+	> MessageDialog
+	> Loader
+> Helpers
+  > USB
+     -USB 
+  > CAMERA
+	  -Azure Face API
+  > FINGERPRINT
+     -Fingerprint
+  > SPECS
+      -GetSpecifications
+
+> Domain
+	> DTO
+    > Properties Dashboard
+> Resources
+  > Images
+  ui1.jph
+  
+  > Settings
+    > URL 
+	> Themes
+	> BOOTSTRAP.CS
+	> ENUM
+	 > Currency
+	 > Face
+	 > Fingerprint

@@ -1,0 +1,53 @@
+using Microsoft.AspNet.SignalR.Client;
+using SignalRForm.Models;
+using SignalRForm.Services;
+using SignalRForm.Utlity;
+using SignalRForm.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+
+namespace SignalRForm
+{
+    public partial class Form1 : Form
+    {
+        private static string name = "rei";
+        private static IHubProxy hubProxy;
+        private static HubConnection connection;
+        private static string url = "http://localhost:8585/SignalUsb";
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            connection = new HubConnection(url);
+            hubProxy = connection.CreateHubProxy("USBHub");
+
+            var task = connection.Start();
+            task.Wait();
+
+            var task2 = hubProxy.Invoke<List<User>>("UserConnected", new object[] { name });
+            task.Wait();
+      
+        }
+
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+               await hubProxy.Invoke("USBConnected", new object[] { name });
+
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+          await hubProxy.Invoke("USBDisconnected", new object[] { name });
+  
+        }
+
+        private async void button3_Click(object sender, EventArgs e)
+        {
+            var result = await hubProxy.Invoke<bool>("GetUSBStatus", new object[] { "robin" });
+            
+        }
+    }
+}
