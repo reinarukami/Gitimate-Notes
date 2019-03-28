@@ -1,0 +1,11 @@
+ 
+ Use cycle for combinations
+ 
+ cycle: {
+      rotationY: [360, 0],
+      rotationX: [360, 0],
+  }}, 0.500)
+  
+  rotation:[120, 120]
+  
+  y:[100,-100]

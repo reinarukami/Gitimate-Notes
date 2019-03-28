@@ -1,0 +1,10 @@
+{
+    "UserName": "Robin1",
+    "Password": "Robin321",
+  	"EmailAddress": "robin.sumalde@gmail.com",
+  	"Contact": "+639959280592",
+    "FingerPrint": "Finger1",
+    "FaceID" : "FaceId",
+    "USBSerial" : "Fdrive1",
+    "ClientId": "1"
+}
