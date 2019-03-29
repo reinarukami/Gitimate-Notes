@@ -1,0 +1,37 @@
+          <Navbar collapseOnSelect="true" bg="dark" variant="dark" expand="lg" fixed="top" id="Custom-Header">
+          <Container fluid="true">
+            <Navbar.Brand style={{color:'red'}}>
+            <Link to="/">
+              <img
+                alt="img"
+                src={logo}
+                width="30"
+                height="30" 
+                className="d-inline-block align-top"
+              />
+            </Link>
+            
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />      
+            <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+      
+            </Nav> 
+
+              <Nav style={{ textAlign: 'center', opacity:1 }}>
+                <Nav.Link><Link className="text-danger" to="/Portfolio">Portfolio</Link></Nav.Link>   
+                <Nav.Link><Link className="text-danger" to="/Resume">Resume</Link></Nav.Link>           
+                <Nav.Link><Link className="text-danger" to="/About">About</Link></Nav.Link>
+              </Nav> 
+   
+
+            </Navbar.Collapse>
+          </Container>
+
+        </Navbar>
+		
+		             <Nav>
+                <Nav.Link><Link className="text-danger" to="/Portfolio">Portfolio</Link></Nav.Link>   
+                <Nav.Link><Link className="text-danger" to="/Resume">Resume</Link></Nav.Link>           
+                <Nav.Link><Link className="text-danger" to="/About">About</Link></Nav.Link>
+              </Nav> 

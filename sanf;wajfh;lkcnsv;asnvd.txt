@@ -1,0 +1,8 @@
+
+
+ 
+ (Body Language) success = html5
+ (javascript) danger = javascript
+ (javascript framework)dark = react
+ (backend language) primary = c#
+ (backend framework)warning = mvc

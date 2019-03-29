@@ -1,0 +1,23 @@
+        <Navbar collapseOnSelect="true" bg="dark" variant="dark" expand="lg" fixed="top" id="Custom-Header">
+        
+            <Navbar.Brand style={{color:'red'}}>
+            <Link to="/">
+              <img
+                alt="img"
+                src={logo}
+                width="30"
+                height="30" 
+                className="d-inline-block align-top"
+              />
+            </Link>     
+            </Navbar.Brand>
+
+             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+              <Navbar.Collapse id="responsive-navbar-nav">
+                <Nav className="mr-auto">
+                  <Link to="/Portfolio"><span class="nav-link">Portfolio</span></Link>
+                  <Link to="/Resume"><span class="nav-link">Resume</span></Link>
+                  <Link to="/About"><span class="nav-link">About</span></Link>
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>

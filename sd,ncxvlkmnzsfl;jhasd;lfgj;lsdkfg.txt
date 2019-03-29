@@ -1,0 +1,80 @@
+import { TimelineMax as Timeline, Power1, Bounce, Back} from 'gsap';
+
+const getDefaultTimeline = (node, delay) => 
+{
+  const timeline = new Timeline({ paused: true });
+  const container = node.querySelectorAll('.container-fluid');
+  const query = node.querySelector('.container-fluid');
+  const content = query.querySelectorAll('.content');
+
+  timeline
+    .from(timeline, 0.375, { display: 'none', autoAlpha: 0, delay, ease: Power1.easeIn })
+    .staggerFrom(container, 0.800, { autoAlpha: 0, x: -500, ease: Bounce.easeOut}, 0.500)
+    .staggerFrom(content, 1, { autoAlpha: 0, x: 0,
+    cycle: 
+    {
+      ease: Back.easeOut
+    }}, 0.500);
+    
+
+  return timeline;
+}
+
+const getHomeTimeline = (node, delay) => {
+
+  const timeline = new Timeline({ paused: true });
+  const div = node.querySelectorAll('.alert');
+  const title = node.querySelectorAll('.alert-heading');
+  const image = node.querySelectorAll('#index-profile-picture');
+  const main = node.querySelectorAll('#index-paragraph-main');
+  const footer = node.querySelectorAll('#index-paragraph-footer');
+
+  timeline
+    .from(node, 0.375, { display: 'none', autoAlpha: 0, delay })
+    .staggerFrom(div, 0.800, { autoAlpha: 0, x: -500, ease: Bounce.easeOut}, 0.500)
+    .staggerFrom(title, 0.375, { autoAlpha: 0, x: -25, 
+    cycle: {
+      rotationY: [360, 0],
+      rotationX: [360, 0],
+    }}, 0.500)
+    .staggerFrom(image, 0.375, { autoAlpha: 0, x: -25,
+    cycle: {
+      rotationY: [360, 0],
+      rotationX: [360, 0],
+    }}, 0.500)
+    .staggerFrom(main, 0.375, { autoAlpha: 0, x: -25,
+    cycle: {
+      rotationY: [360, 0],
+      rotationX: [360, 0],
+    }}, 0.500)
+    .staggerFrom(footer, 0.375, { autoAlpha: 0, x: -25,
+    cycle: {
+      rotationY: [360, 0],
+      rotationX: [360, 0],
+    }}, 0.500)
+
+  return timeline;
+}
+
+export const play = (pathname, node, appears) => {
+  const delay = appears ? 0 : 0.5;
+  let timeline
+
+  if (pathname === '/')
+    timeline = getHomeTimeline(node, delay);
+  else
+    timeline = getDefaultTimeline(node, delay);
+
+  window.requestAnimationFrame(() => timeline.play());
+
+}
+
+export const exit = (node) => {
+  const timeline = new Timeline({ paused: true });
+
+  timeline.to(node, 1.375, { autoAlpha: 0, x: 6000,  cycle: {
+    ease: Back.easeOut
+   }});
+    
+  timeline.play();
+}
